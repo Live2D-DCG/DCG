@@ -1,0 +1,17 @@
+// Command Line script to rename files.
+// Must change dir into the folder befoer enter the below commands.
+for %I in (.) do set CurrDirName=%~nxI
+rename 00000000.txt %CurrDirName%_attack.mtn
+rename 00000001.txt %CurrDirName%_hit.mtn
+rename 00000002.txt %CurrDirName%_idle.mtn
+rename 00000003.moc character.dat
+rename 00000004.dat MOC.%CurrDirName%.json
+
+// This one include banner.mtn
+for %I in (.) do set CurrDirName=%~nxI
+rename 00000000.txt %CurrDirName%_attack.mtn
+rename 00000001.txt %CurrDirName%_banner.mtn
+rename 00000002.txt %CurrDirName%_hit.mtn
+rename 00000003.txt %CurrDirName%_idle.mtn
+rename 00000004.moc character.dat
+rename 00000005.dat MOC.%CurrDirName%.json
