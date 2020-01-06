@@ -25,3 +25,32 @@ Get-ChildItem "$folder/*.png" |
         $_ | Move-Item -Destination $folder\$target\texture_00.png
     }
 
+//Combines two json files By: Arsylk
+
+import json
+
+model_info_path = '{your_path}/model_info.json'
+child_names_path = '{your_path}/extracted_child_names.json'
+idx_model_info_path = '{your_path}/idx_model_info.json'
+
+with open(model_info_path, 'r', encoding='utf-8') as file:
+    model_info = json.loads(file.read())
+with open(child_names_path, 'r', encoding='utf-8') as file:
+    child_names = json.loads(file.read())
+
+# begin
+idx_model_info = dict(child_names)
+
+for idx in child_names:
+    for variant in child_names[idx]['variants']:
+        idx_unique = '%s_%s' % (idx, variant)
+        if idx_unique in model_info:
+            model_info_positions = [(key, val) for key, val in model_info[idx_unique].items()
+                                    if isinstance(model_info[idx_unique][key], dict)
+                                    and 'position' in model_info[idx_unique][key]]
+            idx_model_info[idx]['variants'][variant]['positions'] = dict(sorted(model_info_positions))
+            idx_model_info[idx]['variants'] = dict(sorted(idx_model_info[idx]['variants'].items()))
+
+# finish
+with open(idx_model_info_path, 'w', encoding='utf-8') as file:
+    json.dump(idx_model_info, file, sort_keys=True, indent=4, ensure_ascii=False)
