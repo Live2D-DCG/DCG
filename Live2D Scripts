@@ -17,13 +17,31 @@ rename 00000003.txt %CurrDirName%_idle.mtn
 rename 00000004.moc character.dat
 rename 00000005.dat MOC.%CurrDirName%.json
 
+//Spa
+
+for %I in (.) do set CurrDirName=%~nxI
+rename 00000000.moc character.dat
+rename 00000001.dat MOC.%CurrDirName%.json
+rename 00000002.physics physics.json
+rename 00000003.txt %CurrDirName%_idle.mtn
+rename 00000004.txt %CurrDirName%_max.mtn
+rename 00000005.txt %CurrDirName%_maxtouch.mtn
+rename 00000006.txt %CurrDirName%_touch.mtn
+rename 00000007.png texture_00.png
+
+//remove files from all subfolder
+del /s texture_00.png
+
 //Move image files into their corresponding folders
+
 $folder = ‘C:\Users\...\assets’
 Get-ChildItem "$folder/*.png" |
     ForEach-Object{
         $target = ($_.Name -split '.pck')[0]
         $_ | Move-Item -Destination $folder\$target\texture_00.png
     }
+    
+   
 
 //Combines two json files By: Arsylk
 
