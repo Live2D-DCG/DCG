@@ -5,3 +5,5 @@ Drag and Drop pck into the .bat files, it will automatically unpack and rename t
 For global pck drag and drop them into Live2D Global.bat
 
 For Korean pck drag and drop them into Live2D Int.bat
+
+Huge credits to Arsylk (https://github.com/Arsylk)
