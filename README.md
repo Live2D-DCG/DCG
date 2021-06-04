@@ -6,4 +6,4 @@ For global pck drag and drop them into Live2D Global.bat
 
 For Korean pck drag and drop them into Live2D Int.bat
 
-Huge credits to Arsylk (https://github.com/Arsylk)
+Huge credits to Tsanie (https://bitbucket.org/tsanie/pcktool/src/master/)
